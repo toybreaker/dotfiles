@@ -1,11 +1,8 @@
 # USING SYS APACHE & PHP
 
-Mostly from:
-```
-https://freecodetutorial.com/install-apache-mysql-php-macos-mojave-symfony-4-project/
-```
+Mostly from this [freecodetutorial](https://freecodetutorial.com/install-apache-mysql-php-macos-mojave-symfony-4-project/).
 
-##### Start Apache
+##### START Apache
 
 ```
 sudo apachectl start
@@ -18,7 +15,7 @@ cd /etc/apache2/users/
 ```
 
 
-#####  To know you username:
+##### KNOW you username!:
 
 
 ```
@@ -43,13 +40,13 @@ Require all granted
 
 Save!
 
-### Get the permissions right
+### Get permissions right
 
 ```
 sudo chmod 644 admi.conf
 ```
 
-### Configure the httpd.conf file   
+### Configure httpd.conf   
 Type the following command in the terminal and go to apache2 directory.
 
 ```
@@ -194,10 +191,9 @@ sudo atom /etc/hosts
 Add the Domain and ‘www‘ alias to resolve to the localhost address.
 
 ```
-127.0.0.1 adriasartore
+127.0.0.1 jugnlestar
 ```
 (....and all other local projects!! or install DNSmasq (see section later in this file)
-
 
 Ensure your web directory has permissions of 755. Change permissions with (not working!):
 
@@ -206,7 +202,7 @@ chmod 755 /Users/admi/Sites/
 ```
 
 
-#### The new controlling/paramount files are:
+#### The new CONTROLLING/PARAMOUNT files are:
 
 ```
 /private/etc/apache2/httpd.conf
@@ -224,7 +220,7 @@ chmod 755 /Users/admi/Sites/
 /private/etc/host
 ```
 
-#### Common useful commands
+#### Common USEFUL commands
 
 ```
 sudo apachectl restart
@@ -236,26 +232,15 @@ php -v
 which apachectl
 ```
 
-## Install dnscrypt
+## INSTALL dnscrypt
 
-Instructions here:
+Instructions [here](https://github.com/dnscrypt/dnscrypt-proxy/wiki/installation) or using brew with ***dnsmasq*** too [here](https://github.com/dnscrypt/dnscrypt-proxy/wiki/installation).
 
-```
-https://github.com/dnscrypt/dnscrypt-proxy/wiki/installation
-```
-To be used with dnsmasq too, here:
-
-```
-https://gist.github.com/irazasyed/88894e75034af9f8c167f0cbeede9159
-```
 
 ## MAYBE Use dnsmasq instead of /etc/hosts
 ### Install DNSmasq
-from
+From Steven Rombauts [here](https://www.stevenrombauts.be/2018/01/use-dnsmasq-instead-of-etc-hosts/) and [here](https://www.stevenrombauts.be/2019/06/restart-dnsmasq-without-sudo/)
 
-```
-https://www.stevenrombauts.be/2018/01/use-dnsmasq-instead-of-etc-hosts/shttps://www.stevenrombauts.be/2019/06/restart-dnsmasq-without-sudo/
-```
 
 ```
 brew install dnsmasq
