@@ -52,7 +52,7 @@ brew cask install \
 
 from : https://www.netlify.com/blog/2016/06/07/setting-up-your-jamstack-from-scratch/
 
-NVM allows you to install multiple versions of Node, specify which version you want to use, and change versions on the fly. Additionally with NVM, you don’t need to use sudo to install node modules globally. 
+NVM allows you to install multiple versions of Node, specify which version you want to use, and change versions on the fly. Additionally with NVM, you don’t need to use sudo to install node modules globally.
 
 To install or update nvm, you can use the install script using cURL:
 
@@ -87,7 +87,7 @@ brew instal openssl@1.1
 echo 'export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"' >> /Users/admi/.bash_profile
 ```
 
-## Install ruby 
+## Install ruby
 
 ```
 rbenv install 2.6.3
@@ -123,6 +123,8 @@ Install bundler
 
 ```
 gem install bundler
+gem install rmagick -v '4.1.0
+
 ```
 
 ## MIX

@@ -135,7 +135,7 @@ Allow the vhosts configuration from the Apache configuration file httpd.conf
 ### Open the httpd.conf
 
 ```
-sudo atom /etc/apache2/httpd.conf
+atom /etc/apache2/httpd.conf
 ```
 
 ##### Search for ```vhosts``` and uncomment the include line
@@ -148,7 +148,7 @@ Include /private/etc/apache2/extra/httpd-vhosts.conf
 Open this file to add in the virtual host.
 
 ```
-sudo atom /etc/apache2/extra/httpd-vhosts.conf
+atom /etc/apache2/extra/httpd-vhosts.conf
 ```
 
 Add the existing text block and edit to suit: (The first VirtualHost section is used for all requests that do not match a ServerName or ServerAlias in any <VirtualHost> block.)
@@ -185,7 +185,7 @@ Add the existing text block and edit to suit: (The first VirtualHost section is 
 Map the IP address to localhost
 
 ```
-sudo atom /etc/hosts
+atom /etc/hosts
 ```
 
 Add the Domain and ‘www‘ alias to resolve to the localhost address.
@@ -348,11 +348,11 @@ cutil --dns
 The output should list our top-level domains and their configured nameserver:
 
 ```
-resolver #8
-  domain : box
+resolver #8  
+  domain : box  
   nameserver[0] : 127.0.0.1
 ..
-resolver #9
-  domain : test
+resolver #9  
+  domain : test  
   nameserver[0] : 127.0.0.1
 ```
