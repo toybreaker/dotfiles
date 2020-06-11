@@ -1,7 +1,9 @@
+#!/usr/bin/env bash
+
 ### GENERAL
 
 # https://github.com/kevinrenskers/dotfiles/blob/master/macos/setup.sh
-
+# https://mths.be/macos
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -9,6 +11,16 @@ osascript -e 'tell application "System Preferences" to quit'
 
 # Ask for the administrator password upfront
 sudo -v
+
+
+# Keep-alive: update existing `sudo` time stamp until this dot file has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+
+###############################################################################
+# General UI/UX                                                               #
+###############################################################################
+
 
 # Disable Sudden Motion Sensor, Leaving this turned on is useless when you're using SSDs.
 sudo pmset -a sms 0
@@ -41,8 +53,10 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
+###############################################################################
+# Finder                                                                      #
+###############################################################################
 
-### FINDER
 
 # Finder: show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
@@ -131,10 +145,10 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 
 
 
+###############################################################################
+# Screen                                                                      #
+###############################################################################
 
-
-
-### SCREEN
 
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
@@ -152,7 +166,7 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Set highlight color to green
 defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
-# Set a fast keyboard repeat rate      
+# Set a fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 2
 # normal minimum is 2 (30 ms)
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
@@ -187,17 +201,19 @@ defaults write com.apple.DiskUtility DUShowEveryPartition -boolean
 
 
 
+###############################################################################
+# Safari & WebKit                                                             #
+###############################################################################
 
-### Safari & WebKit  
-  
 # Privacy: don’t send search queries to Apple
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 
 
 
-
-### Terminal 
+###############################################################################
+# Terminal                                                                    #
+###############################################################################
 
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
@@ -207,9 +223,10 @@ defaults write com.apple.terminal StringEncodings -array 4
 defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
 
+###############################################################################
+# Google Chrome & Google Chrome Canary                                        #
+###############################################################################
 
-
-### Google Chrome & Google Chrome Canary
 
 # Use the system-native print preview dialog
 defaults write com.google.Chrome DisablePrintPreview -bool true
