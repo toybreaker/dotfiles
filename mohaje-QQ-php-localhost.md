@@ -1,27 +1,35 @@
 # USING SYS APACHE & PHP
 
-
-from:
+Mostly from:
 ```
-https://freecodetutorial.com/install-apache-mysql-php-macos-mojave-symfony-4-project/```
+https://freecodetutorial.com/install-apache-mysql-php-macos-mojave-symfony-4-project/
+```
 
-Start Apache
+##### Start Apache
 
 ```
 sudo apachectl start
 ```
 
-Create a username.conf file which will help in configuring our document root.
+Create a ```username.conf``` file which will help in configuring our document root.
 
-```cd /etc/apache2/users/```
+```
+cd /etc/apache2/users/
+```
 
-To know you username:
 
-```whoami```
+#####  To know you username:
+
+
+```
+whoami
+```
 
 Make your_user_name.conf
 
-```sudo atom admi.conf```
+```
+sudo atom admi.conf
+```
 
 Paste this:
 
@@ -101,19 +109,19 @@ ServerName localhost
 cd /etc/apache2/extra/
 ```
 
-Make a backup copy first
+##### Make a backup copy first
 
 ```
 sudo cp httpd-userdir.conf httpd-userdir.conf.backup
 ```
 
-Open to edit
+##### Open to edit
 
 ```
 sudo atom httpd-userdir.conf
 ```
 
-Uncomment the following line.
+##### Uncomment the following line.
 
 ```
 Include /private/etc/apache2/users/*.conf
@@ -133,7 +141,7 @@ Allow the vhosts configuration from the Apache configuration file httpd.conf
 sudo atom /etc/apache2/httpd.conf
 ```
 
-Search for ```vhosts``` and uncomment the include line
+##### Search for ```vhosts``` and uncomment the include line
 
 ```
 Include /private/etc/apache2/extra/httpd-vhosts.conf
@@ -186,7 +194,7 @@ sudo atom /etc/hosts
 Add the Domain and ‘www‘ alias to resolve to the localhost address.
 
 ```
-127.0.0.1 adriasartore 
+127.0.0.1 adriasartore
 ```
 (....and all other local projects!! or install DNSmasq (see section later in this file)
 
@@ -235,14 +243,15 @@ Instructions here:
 ```
 https://github.com/dnscrypt/dnscrypt-proxy/wiki/installation
 ```
-To be used with dnsmasq too, here: 
+To be used with dnsmasq too, here:
+
 ```
 https://gist.github.com/irazasyed/88894e75034af9f8c167f0cbeede9159
 ```
 
 ## MAYBE Use dnsmasq instead of /etc/hosts
 ### Install DNSmasq
-from 
+from
 
 ```
 https://www.stevenrombauts.be/2018/01/use-dnsmasq-instead-of-etc-hosts/shttps://www.stevenrombauts.be/2019/06/restart-dnsmasq-without-sudo/
@@ -271,7 +280,7 @@ Add this line all the way at the bottom:
 conf-dir=/usr/local/etc/dnsmasq.d,*.confs
 ```
 
-This will instruct dnsmasq to include all files that end with .conf  in the ```/usr/local/etc/dnsmasq.d ```directory as additional configuration files. 
+This will instruct dnsmasq to include all files that end with .conf  in the ```/usr/local/etc/dnsmasq.d ```directory as additional configuration files.
 This way we can keep our custom configuration better organised.
 
 ### Make sure the directory exists and create our first config file:
@@ -288,7 +297,7 @@ atom /usr/local/etc/dnsmasq.d/development.conf
 Add this:
 
 ```
-address=/.test/127.0.0.1 
+address=/.test/127.0.0.1
 ```
 
 ### Save all files and restart dnsmasq to apply the changes:
@@ -309,18 +318,18 @@ We should get an answer back that points to ```127.0.0.1```:
 Configure as default DNS resolver in macOS
 To complete our set up we need to tell macOS to use dnsmasq for its DNS queries. We are going to send only DNS queries for ```*.test``` and ```*.box``` domains.
 
-On most UNIX-like systems the /etc/resolv.conf file determines how DNS queries are made. 
+On most UNIX-like systems the /etc/resolv.conf file determines how DNS queries are made.
 When you make changes to the DNS Servers in macOS’s System Preferences, this file is re-generated.
 
-For that reason we don’t want to edit it directly. 
-We can however add separate resolver files inside the ```/etc/resolver/``` directory. 
+For that reason we don’t want to edit it directly.
+We can however add separate resolver files inside the ```/etc/resolver/``` directory.
 Make sure it exists before continuing:
 
 ```
 sudo mkdir /etc/resolver
 ```
 
-The name of each configuration file will correspond to the top-level domain name, so create the file /etc/resolver/test for .test domains 
+The name of each configuration file will correspond to the top-level domain name, so create the file /etc/resolver/test for .test domains
 
 ```
 atom /etc/resolver/test
@@ -332,7 +341,7 @@ Add this line:
 nameserver 127.0.0.1
 ```
 
-This instructs the DNS resolver to send all queries for domains ending in .test to the nameserver at 127.0.0.1. 
+This instructs the DNS resolver to send all queries for domains ending in .test to the nameserver at 127.0.0.1.
 
 Do the same for /etc/resolver/box:
 
@@ -345,7 +354,7 @@ Add this line:
 nameserver 127.0.0.1
 ```
 
-Sometimes it can take a little while before the new configuration is applied.  We can check that our new resolvers are registered with this command: 
+Sometimes it can take a little while before the new configuration is applied.  We can check that our new resolvers are registered with this command:
 
 ```
 cutil --dns   
@@ -362,5 +371,3 @@ resolver #9
   domain : test
   nameserver[0] : 127.0.0.1
 ```
-
-
