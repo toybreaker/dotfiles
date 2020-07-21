@@ -41,6 +41,9 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 # Disable smart quotes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
+# Disable automatic period substitution as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
 # Empty Trash securely by default
 defaults write com.apple.finder EmptyTrashSecurely -bool true
 
@@ -143,6 +146,12 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	OpenWith -bool true \
 	Privileges -bool true
 
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+
+# Disable press-and-hold for keys in favor of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 
 ###############################################################################
@@ -166,10 +175,15 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Set highlight color to green
 defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
-# Set a fast keyboard repeat rate
-defaults write NSGlobalDomain -g KeyRepeat -int 2
+# Set a blazingly fast keyboard repeat rate
+#defaults write NSGlobalDomain KeyRepeat -int 1
+#defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+
+# Set a slow keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 4
 # normal minimum is 2 (30 ms)
-defaults write NSGlobalDomain InitialKeyRepeat -int 13
+defaults write NSGlobalDomain InitialKeyRepeat -int 20
 # normal minimum is 15 (225 ms)
 
 # Show language menu in the top right corner of the boot screen
